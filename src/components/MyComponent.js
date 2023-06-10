@@ -2,43 +2,31 @@
 //function component
 
 import React from 'react';
+import UserInfor from './UserInfo';
+import DisplayInfor from './DisplayInfor';
 
 class MyComponent extends React.Component {
     
-    state = {
-        name: 'Bamboo',
-        address: 'Binh Thuan province',
-        age: 21
-    };
-
-    handleClick(event) {
-        console.log('>> click my by button')
-        // console.log(" Random ", Math.floor(Math.random() * 100) + 1)     
-        
-        
-        //merge State => react class
-        this.setState({
-            name: 'Tuyet Truc',
-            age: Math.floor((Math.random() * 100) + 1)
-        })
-
-        // this.setState({
-        //     age: Math.floor((Math.random() * 100) + 1)
-        // })
-    }
-
-    handleOnMouseOver(event){
-        // console.log(event)
+    state ={
+        listUsers: [
+            {id:1, name: "Bamboo", age: "21"},
+            {id:2, name: "Elephant", age: "22"},
+            {id:3, name: "Tiger", age: "16"},
+            {id:4, name: "Bird", age: "35"}
+        ]
     }
 
     //JSX 
     render() {
+        //DRY: don't repeat yourself
         return(
 
             <div>
-                My name is {this.state.name} and I'm from {this.state.age}
-                <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
-                <button onClick = {(event) => {this.handleClick(event)} }>Click me</button>
+                <UserInfor/>
+                <br></br>
+                <DisplayInfor listUsers={this.state.listUsers}/>
+                
+                
             </div>
             
         );
